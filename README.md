@@ -76,3 +76,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+###########################################################################################################################
+## Comandos importantes
+
+- $ composer create-project --prefer-dist laravel/laravel:^7.0 NovaChat    //Creación del proyecto
+- $ composer require livewire/livewire                                     //Instalación LiveWire
+- $ composer require laravel/ui:^2.4                                       //Instalación UI.
+- $ npm install && npm run dev . 
+- $ php artisan ui bootstrap                                               //Instalación Bootstrap.
+
