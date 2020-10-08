@@ -28,6 +28,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    @livewireStyles
+    @livewireScripts
 </head>
 <body>
     <div id="app">
