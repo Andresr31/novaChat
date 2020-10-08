@@ -86,3 +86,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - $ npm install && npm run dev . 
 - $ php artisan ui bootstrap                                               //Instalación Bootstrap.
 
+- $ composer require pusher/pusher-php-server                              //Instalación Pusher
+    -.env
+            PUSHER_APP_ID=1087168
+            PUSHER_APP_KEY=05f23660c3178a8d9954
+            PUSHER_APP_SECRET=e670fb7d3f24f166dc54
+            BROADCAST_DRIVER=pusher
+    
+
