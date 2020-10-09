@@ -1,40 +1,59 @@
 <div>
     <div class="form-group">
-        <label for="name">Nombre:</label>
-        <input type="text" class="form-control" id="name" wire:model="name">
-        @error('name')
+        <label for="user">Nombre:</label>
+        <input type="text" class="form-control" id="user" wire:model="user">
+        @error('user')
             <small class="text-danger h6" >{{$message}}</small >
         @enderror
     </div>
 
     <div class="form-group">
         <label for="message">Mensaje:</label>
-        <input type="text" class="form-control" id="message" wire:model="message">
+        <input type="text" class="form-control" id="message" wire:model="message"  wire:keydown.enter="sendMessage">
         @error('message')
             <small class="text-danger h6" >{{$message}}</small >
+        @else
+            <small class="text-muted">Escribe tu mensaje y teclea <code>ENTER</code> para enviarlo</small>
+
         @enderror
     </div>
 
-    <div class="form-group">
-        <button class="btn btn-dark" wire:click="sendMessage">Enviar Mensaje</button>
+    <div wire:offline class="alert alert-danger text-center">
+        <strong>Se ha perdido la conexión a Internet</strong>
     </div>
 
-    {{-- Mensaje de alerta --}}
-    <div style="position: absolute; my-4" class="alert alert-success collapse" role="alert" id="alert">
-        Mensaje enviado
+    <div class="row">
+        <div class="col-6">
+            <!-- Mensajes de alerta -->
+            <div style="position: absolute;"
+            class="alert alert-success collapse"
+            role="alert"
+            id="avisoSuccess"
+            >Mensaje enviado</div>
+        </div>
+        <div class="col-6 pt-2 text-right">
+            <button
+                class="btn btn-dark"
+                wire:click="sendMessage"
+                wire:loading.attr="disabled"
+                wire:offline.attr="disabled"
+            >Enviar Mensaje</button>
+        </div>
     </div>
+
 
 
     {{-- Recibir notificación --}}
     <script>
-        window.livewire.on('messageSent',function(){
-            //Mostrar aviso
-            $('#alert').fadeIn("slow");
-
-            //Ocultar aviso a los 3 segundos
-            setTimeout(function(){$('#alert').fadeOut("slow");},3000);
-
+        // Esto lo recibimos en JS cuando lo emite el componente
+        // El evento "enviadoOK"
+        $( document ).ready(function() {
+            window.livewire.on('sendOk', function () {
+                $("#avisoSuccess").fadeIn("slow");
+                setTimeout(function(){ $("#avisoSuccess").fadeOut("slow"); }, 3000);
+            });
         });
+
     </script>
 
 
